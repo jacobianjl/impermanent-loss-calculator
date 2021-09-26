@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css"
+    href="{{ url_for('static', filename='calculator.css') }}"/>
+</head>
+<body>
+    <h1>Impermanent Loss Calculator</h1>
+    <form method="post" action="{{ url_for('operation_result') }}" id="calculator_form">
+        <label for="Input1">Token Price A Initial:</label>
+        <input type="Input1" name="Input1" id="Input1">
+        <br/>
+        <label for="Input2">Token Price B Initial:</label>
+        <input type="Input2" name="Input2" id="Input2">
+        <br/>
+        <label for="Input3">Token Price A Future:</label>
+        <input type="Input3" name="Input3" id="Input3">     
+        <br/>
+        <label for="Input4">Token Price B Future:</label>
+        <input type="Input4" name="Input4" id="Input4">
+        <br/>
+        <label for="Input5">Token A Pool Weight (Enter decimal):</label>
+        <input type="Input5" name="Input5" id="Input5">
+        <br/>
+        <label for="Input6">Token B Pool Weight (Enter decimal):</label>
+        <input type="Input6" name="Input6" id="Input6">
+        <br/>
+        <input type="submit" value="Submit"/>
+    </form>
+    {% if calculation_success == True %}
+        <br/>
+        <p>The impermanent loss is {{result}} percent</p>
+    {% endif %}
+    {% if calculation_success == False %}
+        <br/>
+        <p>Please enter valid prices</p>
+    {% endif %}
+</body>
+</html>
